@@ -38,7 +38,7 @@ public class TodoAPI {
 			String id = req.params(":id");
 			
 			if(!isNumber(id)) {
-				return "The id \"%s\" is not a number!".formatted(id);
+				return "The id \"" + id + "\" is not a number!";
 			}
 			
 			Todo filteredTodos = todos
@@ -47,7 +47,7 @@ public class TodoAPI {
 					.findFirst()
 					.orElse(null);
 			if (filteredTodos == null) {
-				return "Todo with the id  \"%s\" not found!".formatted(id);
+				return "Todo with the id  \"" + id + "\" not found!";
 			}
 			return gson.toJson(filteredTodos);
 		});
@@ -66,7 +66,7 @@ public class TodoAPI {
 			String id = req.params(":id");
 
 			if(!isNumber(id)) {
-				return "The id \"%s\" is not a number!".formatted(id);
+				return "The id \"" + id + "\" is not a number!";
 			}
         	
         	List<Todo> deletedElements = todos.stream()
@@ -83,7 +83,7 @@ public class TodoAPI {
         	Gson gson = new Gson();
 			String id = req.params(":id");
 			if(!isNumber(id)) {
-				return "The id \"%s\" is not a number!".formatted(id);
+				return "The id \"" + id + "\" is not a number!";
 			}
         	Todo newTodo = gson.fromJson(req.body(), Todo.class);
         	todos = todos.stream()
