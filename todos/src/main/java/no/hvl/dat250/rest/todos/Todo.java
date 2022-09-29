@@ -1,6 +1,9 @@
 package no.hvl.dat250.rest.todos;
 
 import java.util.Objects;
+import java.util.Random;
+
+import com.google.gson.Gson;
 
 public class Todo {
     private final Long id;
@@ -14,7 +17,7 @@ public class Todo {
     }
 
     public Todo(String summary, String description) {
-        this(null, summary, description);
+        this(new Random().nextLong(), summary, description);
     }
 
     /**
@@ -32,6 +35,14 @@ public class Todo {
         return description;
     }
 
+    String toJson () {
+    	
+    	Gson gson = new Gson();
+    	    
+    	String jsonInString = gson.toJson(this);
+    	
+    	return jsonInString;
+    }
     // Do not change equals and hashcode!
 
     @Override
